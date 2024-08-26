@@ -1,0 +1,10 @@
+#lang sicp
+(define (double x) (* x 2))
+(define (halve x) (/ x 2))
+(define (multi-iter result a-level a b)
+  (cond ((= b 0) result)
+        ((= 0 (remainder b 2))
+         (multi-iter result (double a-level) (double a) (halve b)))
+        (else (multi-iter (+ result a) a-level a (- b 1)))))
+(define (multi a b) (multi-iter 0 1 a b))
+(multi 5 8)
